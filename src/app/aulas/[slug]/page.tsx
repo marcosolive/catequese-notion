@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPartesDaCatequese, getBlockChildren } from "@/lib/notion";
 import NotionBlocks from "@/components/NotionBlocks";
+import { isFullBlock } from "@notionhq/client";
 
 type AulaPageProps = {
   params: Promise<{
@@ -59,7 +60,7 @@ export default async function AulaPage({ params }: AulaPageProps) {
             </p>
           </div> */}
           <div className="mt-12">
-            <NotionBlocks blocks={conteudo.results} />
+            <NotionBlocks blocks={conteudo.results.filter(isFullBlock)} />{" "}
           </div>
         </article>
 
