@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPartesDaCatequese } from "@/lib/notion"; // 1. Importe a função aqui
+import ParteCard from "@/components/ParteCard";
 
 export default async function AulasPage() {
   // 2. Chame a função aqui (usando Promise.all para buscar em paralelo e ganhar performance)
@@ -27,7 +28,7 @@ export default async function AulasPage() {
           </p>
         </header>
 
-        <div className="space-y-10">
+        {/* <div className="space-y-10">
           {partes.map((parte) => (
             <section key={parte.id}>
               <h2 className="text-2xl font-semibold text-stone-900">
@@ -65,6 +66,12 @@ export default async function AulasPage() {
                 ))}
               </div>
             </section>
+          ))}
+        </div> */}
+        {/* Lista de Cards das Partes */}
+        <div className="space-y-6">
+          {partes.map((parte, index) => (
+            <ParteCard key={parte.id} parte={parte} index={index} />
           ))}
         </div>
       </div>
